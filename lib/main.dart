@@ -19,8 +19,11 @@ class XylophoneApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               for (int i = 0; i < keyColors.length; i++)
                 XyloPhoneButton(
@@ -48,12 +51,14 @@ class XyloPhoneButton extends StatelessWidget {
       {super.key, required this.note, required this.keyColor});
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      child: Text(''),
-      style: TextButton.styleFrom(backgroundColor: keyColor),
-      onPressed: () {
-        playSound(note);
-      },
+    return Expanded(
+      child: ElevatedButton(
+        style: TextButton.styleFrom(backgroundColor: keyColor),
+        onPressed: () {
+          playSound(note);
+        },
+        child: const SizedBox(),
+      ),
     );
   }
 }
